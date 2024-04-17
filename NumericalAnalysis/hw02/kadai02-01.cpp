@@ -7,14 +7,14 @@ int main(){
     double b=pow(a,2.0);
     int nmax=10;
 
-    for(int n=0;n<1+nmax;n++){
-        sum=sum+pow(a)
+    for(int n=1;n<1+nmax;n++){
+        sum=sum+pow(a,n);
     }
 
 
     printf("a is %f",a);
     printf("b is %f",b);
-
+    printf("sum is %f",sum);
 
     return 0;
 }
