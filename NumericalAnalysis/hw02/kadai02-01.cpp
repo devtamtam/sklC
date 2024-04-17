@@ -2,9 +2,8 @@
 #include<math.h>
 
 int main(){
-    double a=70.0/100.0;
+    double a=28.0/100.0;
     double sum=1.0;
-    double b=pow(a,2.0);
     int nmax=10;
 
     for(int n=1;n<1+nmax;n++){
@@ -13,7 +12,7 @@ int main(){
 
 
     printf("a is %f",a);
-    printf("b is %f",b);
+
     printf("sum is %f",sum);
 
     return 0;
