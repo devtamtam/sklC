@@ -3,26 +3,26 @@
 #include <time.h>
 
 double f(double a, double b, double x){
-	return pow(x,a)+b;
+	return a*x + b;
 }
 
 int main(){
-	FILE *fp;//ƒtƒ@ƒCƒ‹–¼“I‚È
-	char dummy[256];//‹ó“Ç‚İ—p
+	FILE *fp;//ãƒ•ã‚¡ã‚¤ãƒ«åçš„ãª
+	char dummy[256];//ç©ºèª­ã¿ç”¨
 	int ret;
-    double k[128],x[128],y[128],a,az,b,bz,s,sz;//”z—ñ‚Ì—v‘f‚Ì”‚Í‘½‚ß‚É
+    double x[128],y[128],a,az,b,bz,s,sz;//é…åˆ—ã®è¦ç´ ã®æ•°ã¯å¤šã‚ã«
 	int i,j,nz;
 	double fi;
-	long t0,t1;//Œ…‚Ì‘½‚¢®”
+	long t0,t1;//æ¡ã®å¤šã„æ•´æ•°
 	double tz; 
-	double amin=-1.0,amx=-5.8,da=0.001;
-	double bmin=-1.0,bmx=3.8,db=0.001;
-	fp = fopen("ex-07-3.txt","r"); //ƒf[ƒ^ƒtƒ@ƒCƒ‹v‚ğ“Ç‚İæ‚èê—pr‚ÅŠJ‚­B
-    fgets(dummy,256,fp); //1s–Ú‚ğ‹ó“Ç‚İ‚·‚éB
+	double amin=0.0,amx=3.0,da=0.001;
+	double bmin=0.0,bmx=5.0,db=0.001;
+	fp = fopen("ex-07-3.txt","r"); //ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã€Œlesson-07.txtã€ã‚’èª­ã¿å–ã‚Šå°‚ç”¨rã§é–‹ãã€‚
+    fgets(dummy,256,fp); //1è¡Œç›®ã‚’ç©ºèª­ã¿ã™ã‚‹ã€‚
 	j=1;
-	while( ( ret = fscanf( fp,"%l\t%lf\t%lf",&k[j],&x[j],&y[j]) ) != EOF ){  //ƒf[ƒ^ x[j],y[j] ‚ğ“Ç‚ŞB§ŒäƒR[ƒh \t‚ÍTabB‚m‚n‚sEOF‚Å‚ ‚éŒÀ‚èŒJ‚è•Ô‚·B
-	                                       //2s–Ú‚©‚ç“Ç‚İæ‚èAˆês–Ú‚Í‹ó“Ç‚İÏ‚İ
-		nz=j; //nz:ƒf[ƒ^”
+	while( ( ret = fscanf( fp,"%lf\t%lf",&x[j],&y[j]) ) != EOF ){  //ãƒ‡ãƒ¼ã‚¿ x[j],y[j] ã‚’èª­ã‚€ã€‚åˆ¶å¾¡ã‚³ãƒ¼ãƒ‰ \tã¯Tabã€‚ï¼®ï¼¯ï¼´EOFã§ã‚ã‚‹é™ã‚Šç¹°ã‚Šè¿”ã™ã€‚
+	                                       //2è¡Œç›®ã‹ã‚‰èª­ã¿å–ã‚Šã€ä¸€è¡Œç›®ã¯ç©ºèª­ã¿æ¸ˆã¿
+		nz=j; //nz:ãƒ‡ãƒ¼ã‚¿æ•°
 		j=j+1;
 	}
 	fclose(fp);
@@ -33,14 +33,14 @@ int main(){
 /*	for(j=1;j<=nz;j++){
 		printf(" %f	%f \n",x[j],y[j]);
 	} */
-	t0=clock(); //ŒvZŠJn‚ÌƒNƒƒbƒNƒJƒEƒ“ƒ^
+	t0=clock(); //è¨ˆç®—é–‹å§‹æ™‚ã®ã‚¯ãƒ­ãƒƒã‚¯ã‚«ã‚¦ãƒ³ã‚¿
 	sz=1.E20;
 	az=amin;
 	bz=bmin;
     for(a=amin;a<=amx;a+=da){
-		printf(" \r"); // §ŒäƒR[ƒh \n‚Å‰üsC\r‚Í‰üs‚¹‚¸‚És“ª‚ÖˆÚ“®B
-		// ˜A‘±insert•\¦‚Å‚«‚érewind‚Ìr
-		printf("Checking	a= %f",a); //ŒŸ¸’†‚Ìa‚ğ•\¦B
+		printf(" \r"); // åˆ¶å¾¡ã‚³ãƒ¼ãƒ‰ \nã§æ”¹è¡Œï¼Œ\rã¯æ”¹è¡Œã›ãšã«è¡Œé ­ã¸ç§»å‹•ã€‚
+		// é€£ç¶šinsertè¡¨ç¤ºã§ãã‚‹rewindã®r
+		printf("Checking	a= %f",a); //æ¤œæŸ»ä¸­ã®aã‚’è¡¨ç¤ºã€‚
       for(b=bmin;b<=bmx;b+=db){
 		s=0.;
 	    for(i=1;i<=nz;i++){
@@ -58,8 +58,8 @@ int main(){
 	printf(" a=%7.3f     b=%7.3f \n",az,bz);
 	printf(" s=%10.3e \n",sz);
 	printf("  \n");
-	t1=clock(); //ŒvZI—¹‚ÌƒNƒƒbƒNƒJƒEƒ“ƒ^B
-	tz=double(t1-t0)/CLK_TCK; //ŒvZ‚É—v‚µ‚½ŠÔi•b’PˆÊj‚ğŒvZB
+	t1=clock(); //è¨ˆç®—çµ‚äº†æ™‚ã®ã‚¯ãƒ­ãƒƒã‚¯ã‚«ã‚¦ãƒ³ã‚¿ã€‚
+	tz=double(t1-t0)/CLK_TCK; //è¨ˆç®—ã«è¦ã—ãŸæ™‚é–“ï¼ˆç§’å˜ä½ï¼‰ã‚’è¨ˆç®—ã€‚
 	printf(" tz=%f \n",tz);
 	return 0;
 }
