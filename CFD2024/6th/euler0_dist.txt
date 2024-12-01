@@ -1,0 +1,15 @@
+Sub ex2()
+ '
+  x = 1: dx = 0.1: y1 = 1
+ '
+'
+   dfdx =x
+   
+   y2 =y1 + dx * dfdx
+'
+   Cells(2, 1).Value = x
+   Cells(2, 2).Value = y2
+
+'
+End Sub
+
