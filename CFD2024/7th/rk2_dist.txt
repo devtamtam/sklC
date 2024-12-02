@@ -1,0 +1,23 @@
+Sub runge2()
+
+ x = 1: dx = 0.1: yi = 1
+
+  dfdx_i =x
+
+  yb =yi+dx*dfdx_i
+ 
+  x =x+dx　'xをここで更新するのがMISO
+ 
+  dfdx_ip1 =x 'Eulerでの近似
+
+  yip1 =yi+dx*(dfdx_i+dfdx_ip1)/2
+
+ 
+ Cells(2, 1).Value = x
+ Cells(2, 2).Value = yi
+ Cells(2, 3).Value = dfdx_i
+ Cells(2, 4).Value = dfdx_ip1
+ Cells(2, 5).Value = yip1
+
+
+End Sub

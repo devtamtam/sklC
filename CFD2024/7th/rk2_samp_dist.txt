@@ -1,0 +1,32 @@
+Sub runge2()
+
+   n = 11: x = 1: dx = 0.1: yi = 2.7183
+   
+ For i = 1 To n
+ 
+    Cells(i + 1, 1).Value = x
+   
+   ' exact =
+ 
+  dfdx_i =
+
+    yb =
+ 
+     x =
+ 
+   dfdx_ip1 =
+
+   yip1 =
+ 
+ 
+   Cells(i + 1, 2).Value = dfdx_i
+   Cells(i + 1, 3).Value = yb
+   Cells(i + 1, 4).Value = dfdx_ip1
+   Cells(i + 1, 5).Value = yi
+  ' Cells(i + 1, 6).Value = exact
+   
+   yi =
+  
+ Next i
+   
+End Sub
