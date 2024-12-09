@@ -6,26 +6,27 @@ Sub runge2()
  
     Cells(i + 1, 1).Value = x
    
-   ' exact =
+    exact = exp(1/x)
  
-  dfdx_i =
+  dfdx_i =-yi/(x ^ 2)
 
-    yb =
+    yb = yi+dx* dfdx_i
  
-     x =
+     x = x+dx　'xをここで更新するのがMISO
  
-   dfdx_ip1 =
+   dfdx_ip1 =-yb/(x ^ 2) 'Eulerでの近似で求めたybを使うのがMISO
 
-   yip1 =
+   yip1 =yi+dx*(dfdx_i +dfdx_ip1)/2
+
  
  
    Cells(i + 1, 2).Value = dfdx_i
    Cells(i + 1, 3).Value = yb
    Cells(i + 1, 4).Value = dfdx_ip1
    Cells(i + 1, 5).Value = yi
-  ' Cells(i + 1, 6).Value = exact
+   Cells(i + 1, 6).Value = exact
    
-   yi =
+   yi = yip1 '翌週ループに入る前に
   
  Next i
    
