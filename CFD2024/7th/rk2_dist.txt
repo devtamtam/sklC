@@ -4,7 +4,7 @@ Sub runge2()
 
   dfdx_i =-yi
 
-  yb =yi+dx*dfdx_i
+  yb =yi+dx*dfdx_i'Eulerでの近似
  
   x =x+dx　'xをここで更新するのがMISO
  

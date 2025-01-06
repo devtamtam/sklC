@@ -2,35 +2,31 @@ Sub osci()
 
 nstep = 51
   
-  Pi = 4 * Atn(1): omega = 4 * 2 * Pi
+  Pi = 4 * Atn(1)
+  omega = 4 * 2 * Pi
   
   dt = 0.01: t = 0: vn = 0: yn = 1
   
   For itime = 1 To nstep    ' 時間の繰り返し
   
-   dvdt = -omega ^ 2 * yn
    dydt = vn
+   dvdt = -omega ^ 2 * yn
    
-   vb =
-   yb =
-   
-   dvdt2 =
-   dydt2 =
-
-   vnp1 =
-   ynp1 =
+   vnp1 =vn+dt*dvdt
+   ynp1 =yn+dt*dydt
 
      y_exact = Cos(omega * t)   '  厳密解
+     diff = Abs(yn - y_exact)
 
       Cells(itime + 1, 1).Value = t
-      Cells(itime + 1, 2).Value = yb
-      Cells(itime + 1, 3).Value = yn
-      Cells(itime + 1, 4).Value = vn
-      Cells(itime + 1, 5).Value = y_exact
+      Cells(itime + 1, 2).Value = yn
+      Cells(itime + 1, 3).Value = vn
+      Cells(itime + 1, 4).Value = y_exact
+      Cells(itime + 1, 5).Value = diff
 
      t = t + dt
-     yn =
-     vn =
+     yn =ynp1
+     vn =vnp1
   
   Next itime
 

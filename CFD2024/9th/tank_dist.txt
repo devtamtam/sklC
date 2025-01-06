@@ -1,0 +1,26 @@
+Sub tank1()
+ 
+ n = 11: c = 1: dt = 0.1: t = 0: un = 1: s = 2
+ '
+ For itime = 1 To n
+'
+   v =c*un
+   dv =v*dt
+   du =dv/s
+   unp1 =un-du
+
+  exact = exp(-t/2)
+'
+   Cells(itime + 1, 1) = t
+   Cells(itime + 1, 2) = un
+   Cells(itime + 1, 3) = exact
+   
+   un = unp1
+   
+   t = t + dt
+
+  Next itime
+'
+    
+End Sub
+

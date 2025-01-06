@@ -1,4 +1,4 @@
-Sub osci()
+Sub osci() 'kadai
 
 nstep = 51
   
@@ -11,28 +11,30 @@ nstep = 51
    dvdt = -omega ^ 2 * yn
    dydt = vn
    
-   vb =
-   yb =
+   vb = vn + dt * dvdt 'Euler
+   yb = yn + dt * dydt 'Euler
+    
    
-   dvdt2 =
-   dydt2 =
+   dvdt2 = -omega ^ 2 * yb  'Eulerでの近似で求めたvbを使うのがMISO
+   dydt2 = vb 'Eulerでの近似で求めたybを使うのがMISO
 
-   vnp1 =
-   ynp1 =
+   vnp1 = vn + dt * (dvdt + dvdt2) / 2
+   ynp1 = yn + dt * (dydt + dydt2) / 2
 
-     y_exact = Cos(omega * t)   '  厳密解
+     y_exact = Cos(omega * itime)   '  厳密解
 
-      Cells(itime + 1, 1).Value = t
+      Cells(itime + 1, 1).Value = itime
       Cells(itime + 1, 2).Value = yb
       Cells(itime + 1, 3).Value = yn
       Cells(itime + 1, 4).Value = vn
       Cells(itime + 1, 5).Value = y_exact
 
-     t = t + dt
-     yn =
-     vn =
+    itime = itime + dt
+     yn = ynp1
+     vn = vnp1
   
   Next itime
 
 
 End Sub
+
